@@ -9,10 +9,28 @@ public class  Countries{
 
    @Id
    @GeneratedValue
-   private int id;
-   private String name;
+   private int countryId;
+
+   private String countryName;
+   // private int region_id;
 
    public Countries(){
+   }
+
+   public void setId(int id){
+      this.countryId = id;
+   }
+
+   public int getId(){
+      return countryId;
+   }
+
+   public void setName(String name){
+      this.countryName = name;
+   }
+
+   public String getName(){
+      return countryName;
    }
 
 
