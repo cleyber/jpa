@@ -5,15 +5,22 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Column;
+import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
+
+import java.io.Serializable;
 
 @Entity
 @Table(name = "REGIONS")
-public class Regions{
+public class Regions implements Serializable{
+
+   private static final long serialVersionUID = 1L;
 
    @Id
-   @GeneratedValue
+   @SequenceGenerator( name = "RegionsSeq", sequenceName = "REGIONS_SEQ", allocationSize = 1, initialValue = 5 )
+   @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "RegionsSeq" )
    @Column(name ="REGION_ID")
-   private int regionId;
+   private long regionId;
 
    @Column(name ="REGION_NAME")
    private String regionName;
@@ -22,11 +29,11 @@ public class Regions{
    public Regions(){
    }
 
-   public void setId(int id){
+   public void setId(long id){
       this.regionId = id;
    }
 
-   public int getId(){
+   public long getId(){
       return regionId;
    }
 

@@ -67,7 +67,7 @@
                  </execution>
              </executions>
              <configuration>
-                 <mainClass>rest.Main</mainClass>
+                 <mainClass>jpa.App</mainClass>
              </configuration>
          </plugin>
      </plugins>

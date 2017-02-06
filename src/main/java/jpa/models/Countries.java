@@ -5,33 +5,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Column;
+import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
+import java.io.Serializable;
 import jpa.models.Regions;
 
 @Entity
 @Table(name = "COUNTRIES")
-public class  Countries{
+public class  Countries implements Serializable{
+
+   private static final long serialVersionUID = 1L;
 
    @Id
-   @GeneratedValue
-   @Column(name ="COUNTRY_ID")
-   private int countryId;
+   @Column(name ="COUNTRY_ID", length = 2)
+   private String countryId;
 
    @Column(name ="COUNTRY_NAME")
    private String countryName;
 
-   @ManyToOne
+   @ManyToOne(optional=false)
+   @JoinColumn(name = "REGION_ID", referencedColumnName = "REGION_ID", nullable = false)
    private Regions region;
 
    public Countries(){
    }
 
-   public void setId(int id){
+   public void setId(String id){
       this.countryId = id;
    }
 
-   public int getId(){
+   public String getId(){
       return countryId;
    }
 
