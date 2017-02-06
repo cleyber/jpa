@@ -1,15 +1,21 @@
 package jpa.models;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
+import javax.persistence.Column;
 
-@Entity(name = "REGIONS")
+@Entity
+@Table(name = "REGIONS")
 public class Regions{
 
    @Id
    @GeneratedValue
+   @Column(name ="REGION_ID")
    private int regionId;
 
+   @Column(name ="REGION_NAME")
    private String regionName;
 
 

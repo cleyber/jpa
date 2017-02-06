@@ -1,18 +1,28 @@
-package jps.models;
+package jpa.models;
 
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 
-@Entity(name = "COUNTRIES")
+import jpa.models.Regions;
+
+@Entity
+@Table(name = "COUNTRIES")
 public class  Countries{
 
    @Id
    @GeneratedValue
+   @Column(name ="COUNTRY_ID")
    private int countryId;
 
+   @Column(name ="COUNTRY_NAME")
    private String countryName;
-   // private int region_id;
+
+   @ManyToOne
+   private Regions region;
 
    public Countries(){
    }
@@ -31,6 +41,14 @@ public class  Countries{
 
    public String getName(){
       return countryName;
+   }
+
+   public void setRegion(Regions region){
+      this.region = region;
+   }
+
+   public Regions getRegion(){
+      return region;
    }
 
 
